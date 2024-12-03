@@ -1,0 +1,86 @@
+﻿@* @model ProductData.Models.ProductDetails
+    ViewData["Title"] = "GetProductDetails";
+} *@
+@{
+    var pg = ViewBag.pager; // Access pager from ViewBag
+    PageIn pagedd = new PageIn();
+    if (pg != null)
+    {
+       
+        pagedd.CurrentPage = pg.CurrentPage;
+       
+    }
+    int pageno = pagedd.CurrentPage; 
+  }
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="~/css/Product.css" />
+</head>
+<body>
+    <h2 style="text-align:center">Products</h2>
+
+    <div class="form-container">
+        <div class="input-group">
+            <label for="txtproductId">Product ID:</label>
+            <input class="inputField" type="text" id="txtproductId" />
+        </div>
+        <div class="input-group">
+            <label for="CategoryId">Category ID:</label>
+            <input class="inputField" type="text" id="CategoryId" />
+        </div>
+        <button class="submitButton">Submit</button>
+    </div>
+
+    <div class="table-container">
+        <table class="tableFormat">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* Uncomment and use this when the Model is available
+                @foreach (var product in Model.Items)
+                {
+                <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.CategoryId</td>
+                <td>@product.CategoryName</td>
+                </tr>
+                }
+                *@
+            </tbody>
+        </table>
+    </div>
+
+
+  @*   <div class="pagination">
+    @if (Model.HasPreviousPage)
+    {
+    <a href="@Url.Action("Index", new { page = Model.PageNumber - 1 })">Previous</a>
+    }
+
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+    <a class="@(i == Model.PageNumber ? "active" : "")"
+    href="@Url.Action("Index", new { page = i })">@i</a>
+    }
+
+    @if (Model.HasNextPage)
+    {
+    <a href="@Url.Action("Index", new { page = Model.PageNumber + 1 })">Next</a>
+    }
+    </div>
+    *@
+</body>
+</html>
